@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para mi amor, May</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;700&display=swap');
+
+        :root {
+            --bg-color: #1a1a2e;
+            --primary-color: #e94560;
+            --secondary-color: #f0e68c;
+            --text-color: #e0e0e0;
+            --font-heading: 'Pacifico', cursive;
+            --font-body: 'Poppins', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: var(--font-body);
+            background: var(--bg-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            overflow-x: hidden;
+            background-image: url('https://www.transparenttextures.com/patterns/stardust.png');
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-family: var(--font-heading);
+            font-size: 3.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0;
+            animation: slideInUp 1s forwards;
+        }
+
+        p:nth-of-type(1) { animation-delay: 1s; }
+        p:nth-of-type(2) { animation-delay: 1.5s; }
+        p:nth-of-type(3) { animation-delay: 2s; }
+        p:nth-of-type(4) { animation-delay: 2.5s; }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .highlight {
+            color: var(--secondary-color);
+            font-weight: 700;
+        }
+
+        .countdown-container {
+            margin-top: 2rem;
+            animation: fadeIn 2s ease-in-out 3s backwards;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        #countdown {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            background: rgba(0,0,0,0.2);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .images {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            flex-wrap: wrap;
+            animation: fadeIn 2s ease-in-out 3.5s backwards;
+        }
+
+        .animated-gif {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        footer {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            font-family: var(--font-heading);
+            color: var(--text-color);
+            animation: fadeIn 2s ease-in-out 4s backwards;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Para Mi Amor, May</h1>
+        
+        <p>A solo unas horas de tenerte a mi lado, mi corazón no puede estar más emocionado. Quiero que sepas lo agradecido que estoy por <span class="highlight">todo lo que me has dado</span> desde que empezamos esta aventura juntos.</p>
+        
+        <p>Cada sonrisa, cada momento de alegría, cada palabra tuya ha iluminado mis días. Gracias a ti, me he convertido en <span class="highlight">el hombre más feliz del mundo</span>. Admiro tu valentía por haberte aventurado desde tan lejos para conocerme, y esos días que pasamos juntos fueron simplemente increíbles e inolvidables.</p>
+        
+        <p>Y ahora, el destino nos une de nuevo para algo mágico: despedir el año viejo y <span class="highlight">recibir el Año Nuevo juntos</span>. No podría soñar con un mejor comienzo.</p>
+
+        <div class="images">
+            <img src="https://usagif.com/wp-content/uploads/gif-heart-89.gif" alt="Corazón animado" class="animated-gif">
+            <img src="https://usagif.com/wp-content/uploads/gify/fireworks-8-usagif.gif" alt="Fuegos artificiales" class="animated-gif">
+        </div>
+
+        <div class="countdown-container">
+            <h2>Cuenta regresiva para nuestro Año Nuevo:</h2>
+            <div id="countdown">Calculando...</div>
+        </div>
+
+        <footer>Con todo mi amor infinito...</footer>
+    </div>
+
+    <script>
+        // Establece la fecha de Año Nuevo
+        // En tu caso, es 2025 llegando a 2026.
+        // Corresponde a las 2:00 PM del Sábado 20 en Venezuela (UTC-4)
+        const countDownDate = new Date('2025-12-20T18:00:00Z').getTime();
+
+        const x = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = countDownDate - now;
+
+            const totalHours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("countdown").innerHTML = `${totalHours}h ${minutes}m ${seconds}s`;
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "¡Feliz Año Nuevo, mi amor!";
+            }
+        }, 1000);
+    </script>
+
+</body>
+</html>
